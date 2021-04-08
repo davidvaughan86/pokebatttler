@@ -6,7 +6,7 @@ const pokeSubmit2 = document.querySelector('.player2btn')
 // const name = player1choice
 
 const pokemonGenerate1 = async ()=> {
-    if (poke1.value.length < 0) {
+    if (poke1.value.length < 1) {
         alert('try again')
         poke1.value =''
     } else {
@@ -21,9 +21,27 @@ const pokemonGenerate1 = async ()=> {
     // const image2 = document.createElement('p')
     image.src = pokeData.sprites.front_default
     poke1pic.append(image)
+    let type = pokeData.types[0].type.name
+    let statsHp = pokeData.stats[0].base_stat
+    let statsAtk = pokeData.stats[1].base_stat
+    let statsDef = pokeData.stats[2].base_stat
+    console.log(type)
+    console.log(statsHp)
+    console.log(statsAtk)
+    console.log(statsDef)
+    let poke1Hp = document.querySelector('.poke1Hp')
+    poke1Hp.innerHTML = `
+    <h1>${pokeData.name}</h1>
+    <h2>Type: ${type}</h3>
+    <h2>HP: ${statsHp}</h2>
+    <h4>Attack: ${statsAtk}</h4>
+    <h4>Defense: ${statsDef}</h4>
+    
+    `
+
 }
 catch (err) {
-    err = 'you didnt type a zip'
+    err = 'you didnt type a name'
     alert(err)
     location.reload()
 
@@ -44,19 +62,38 @@ const pokemonGenerate2 = async ()=> {
     const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${poke2.value}`)
     // convert to json
     const pokeData = await data.json()
-    console.log(pokeData)
+    // console.log(pokeData)
     let poke2pic = document.querySelector('.pokemon2Container')
     let image = document.createElement('img')
     // const image2 = document.createElement('p')
     image.src = pokeData.sprites.front_default
     poke2pic.append(image)
+
+    let type = pokeData.types[0].type.name
+    let statsHp = pokeData.stats[0].base_stat
+    let statsAtk = pokeData.stats[1].base_stat
+    let statsDef = pokeData.stats[2].base_stat
+    console.log(type)
+    console.log(statsHp)
+    console.log(statsAtk)
+    console.log(statsDef)
+    let poke2Hp = document.querySelector('.poke2Hp')
+    poke2Hp.innerHTML = `
+    <h1>${pokeData.name}</h1>
+    <h2>Type: ${type}</h3>
+    <h2>HP: ${statsHp}</h2>
+    <h4>Attack: ${statsAtk}</h4>
+    <h4>Defense: ${statsDef}</h4>
+    
+    `
 }
 catch (err) {
-    err = 'you didnt type a zip'
+    err = 'you didnt type a name'
     alert(err)
     location.reload()
 
 }
+  
     
 
 }}
@@ -70,13 +107,56 @@ const pokemonAbilties1 = async ()=> {
     
     let pokeData = await data.json()
     
-    let ability1 = pokeData.abiltiies[0].ability.name
-    // let ability2 = pokeData.abiltiies[1].ability.name
+    let ability1 = pokeData.abilities[0].ability.name
+    let ability2 = pokeData.abilities[1].ability.name
     console.log(ability1)
+    console.log(ability2)
+    let options = document.querySelector('.options')
+    let choice1 = document.createElement('button')
+    choice1.class = 'choice1'
+    options.innerHTML =`
+    
+    <h3>Make a Choice</h3>
+    <button class='choice1' > ATTACK </button>
+    <br/>
+    <p>${pokeData.name} will use: ${ability1} and ${ability2}, to attack the oposing pokemon
+    <br/>
+    <br/>
+    <button class='choice2' > SWITCH POKEMON </button>
+    <p>Swap ${pokeData.name} for another pokemon!
+    
+
+    `
+   
+        
+    
+    
+    
     
 
 
 }
+let options = document.querySelector('.options')
+if (options.innerHTML.length > 0){
+    let choice1 = document.querySelector('.choice1')
+    choice1.addEventListener('click', async ()=> {
+        function clearOption () {
+            document.querySelector('.choice1').innerHTML=''
+        }
+        options.innerHTML = `
+        this works
+
+
+        `
+    let data = await fetch(`https://pokeapi.co/api/v2/pokemon/${poke2.value}`)
+   
+    let pokeData = await data.json()
+    console.log(pokeData)
+    })
+}
+
+
+
 const pokemonAbilties2 = async ()=> {
    
    

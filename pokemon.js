@@ -19,7 +19,7 @@ const pokemonGenerate1 = async ()=> {
     let poke1pic = document.querySelector('.pokemon1Container')
     let image = document.createElement('img')
     // const image2 = document.createElement('p')
-    image.src = pokeData.sprites.front_default
+    image.src = pokeData.sprites.back_default
     poke1pic.append(image)
     let type = pokeData.types[0].type.name
     let statsHp = pokeData.stats[0].base_stat
@@ -116,44 +116,41 @@ const pokemonAbilties1 = async ()=> {
     choice1.class = 'choice1'
     options.innerHTML =`
     
-    <h3>Make a Choice</h3>
+    <h3>Encounter!</h3>
     <button class='choice1' > ATTACK </button>
     <br/>
-    <p>${pokeData.name} will use: ${ability1} and ${ability2}, to attack the oposing pokemon
+    <p>${pokeData.name} will use: ${ability1} and ${ability2}
     <br/>
     <br/>
     <button class='choice2' > SWITCH POKEMON </button>
-    <p>Swap ${pokeData.name} for another pokemon!
+    
     
 
     `
-   
+    if (options.innerHTML.length > 0){
+        pokeSubmit1.removeAttribute(disabled)
+        pokeSubmit2.removeAttribute(disabled)
+    }else{
+        pokeSubmit1.attributes(disabled)
+        pokeSubmit1.attributes(disabled)
+    }
+
+    }
+    
+    // if (options.innerHTML.length > 0){
+    //     const choice1 = document.querySelector('.choice1')
+    //     choice1.addEventListener('click', ()=> {
+    //         function clearOption () {
+    //             document.querySelector('.choice1').innerHTML=''
+    //         }
+    //         clearOption()
+    //     })
+    // }
         
     
     
     
     
-
-
-}
-let options = document.querySelector('.options')
-if (options.innerHTML.length > 0){
-    let choice1 = document.querySelector('.choice1')
-    choice1.addEventListener('click', async ()=> {
-        function clearOption () {
-            document.querySelector('.choice1').innerHTML=''
-        }
-        options.innerHTML = `
-        this works
-
-
-        `
-    let data = await fetch(`https://pokeapi.co/api/v2/pokemon/${poke2.value}`)
-   
-    let pokeData = await data.json()
-    console.log(pokeData)
-    })
-}
 
 
 

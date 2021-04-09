@@ -1,0 +1,97 @@
+body {
+    font-family: 'Hanalei Fill', cursive;
+    font-size: 15px
+}
+.container {
+	
+	border:1px solid black;
+	padding:15px;
+	color:white;
+    background-image: url('/ring1.png');
+    
+    background-size: cover;
+    height: 70%;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    
+     
+
+	}
+
+
+.player1 {
+    display: flex;
+    flex-direction: row;
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid #04d9ff;
+    
+    
+    
+    
+}
+
+.pokemon1Container {
+    animation: top-btm-right 3s ease-in forwards infinite alternate
+}
+.pokemon2Container {
+    animation: top-btm-right 3s ease-in forwards infinite alternate-reverse
+}
+@keyframes top-btm-right {
+    0% {
+        transform: translateX(-40%);
+    }
+    33% {
+        transform: translateY(30%)
+    }
+    
+    
+
+
+}
+
+
+.player2{
+    display: flex;
+    flex-direction: row-reverse;
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid #04d9ff;
+    
+    
+    
+    
+}
+
+.poke2hp {
+    display: flex;
+    
+    background-color: black;
+    
+    
+}
+
+.pokemon1Container img {
+    width: 300px;
+    
+}
+.pokemon2Container img {
+    width: 300px;
+    
+}
+
+
+
+.options {
+    margin-left: 10%;
+    margin-top: 10%;
+    
+    
+    
+    /* background-color: #63d471;
+    background-image: linear-gradient(315deg, #233329 5%, #63d471 74%); */
+
+}
+
+/* .battleContainer2 {
+    display: flex
+} */
